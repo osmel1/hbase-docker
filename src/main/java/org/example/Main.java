@@ -9,8 +9,6 @@ import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 import java.io.IOException;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static final String TABLE_NAME = "users";
     public static final String CF_INFO = "info";
@@ -92,7 +90,6 @@ public class Main {
             admin.deleteTable(tableName);
 
             System.out.println("Vous avez supprimer le tableau !");
-
 
         } catch (IOException e) {
             throw new RuntimeException(e);

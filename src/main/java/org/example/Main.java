@@ -57,31 +57,38 @@ public class Main {
             }
 
             Table table = connection.getTable(tableName);
-            Put put = new Put(Bytes.toBytes("1"));
+            Put put = new Put(Bytes.toBytes("student-1"));
             put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("name"), Bytes.toBytes("Oussama"));
             put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("age"), Bytes.toBytes("21"));
-            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("dip"), Bytes.toBytes("BDCC-II"));
+            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("math"), Bytes.toBytes("B"));
+            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("science"), Bytes.toBytes("A"));
             table.put(put);
-            System.out.println("Vous avez ajouter un ligne !");
+            put = new Put(Bytes.toBytes("student-2"));
+            put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("name"), Bytes.toBytes("Elhachimi"));
+            put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("age"), Bytes.toBytes("30"));
+            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("math"), Bytes.toBytes("A"));
+            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("science"), Bytes.toBytes("A"));
+            table.put(put);
+            System.out.println("Vous avez ajouter deux etudiants !");
 
-            Get get = new Get(Bytes.toBytes("1"));
+            Get get = new Get(Bytes.toBytes("student-1"));
             Result result = table.get(get);
             afficher(result);
 
-            put = new Put(Bytes.toBytes("1"));
-            put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("name"), Bytes.toBytes("Elhachimi"));
-            put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("age"), Bytes.toBytes("30"));
-            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("dip"), Bytes.toBytes("BDCC"));
+            put = new Put(Bytes.toBytes("student-1"));
+            put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("name"), Bytes.toBytes("Oussama"));
+            put.addColumn(Bytes.toBytes(CF_INFO), Bytes.toBytes("age"), Bytes.toBytes("23"));
+            put.addColumn(Bytes.toBytes(CF_GRADES), Bytes.toBytes("math"), Bytes.toBytes("A+"));
             table.put(put);
 
             System.out.println("Vous avez bien modifier !");
 
-            get = new Get(Bytes.toBytes("1"));
+            get = new Get(Bytes.toBytes("student-1"));
             result = table.get(get);
 
             afficher(result);
 
-            Delete delete = new Delete(Bytes.toBytes("1"));
+            Delete delete = new Delete(Bytes.toBytes("student-1"));
             table.delete(delete);
 
             System.out.println("Vous avez supprimer la ligne !");
